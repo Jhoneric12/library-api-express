@@ -1,4 +1,5 @@
 import { createAuthor, getAuthor, updateAuthor, deleteAuthor, getAuthorById } from "../repositories/author.js"
+import { updateAuthorService } from "../services/author.js"
 
 export const getAuthorController = async (req, res) => {
     try {
@@ -45,7 +46,7 @@ export const updateAuthorController = async (req, res) => {
     try {
         const authorData = req.body
         const id = Number(req.params.id)
-        const author = await updateAuthor(id, authorData)
+        const author = await updateAuthorService(id, authorData)
         res.json({
             message: 'Updated Successfully',
             author: author
