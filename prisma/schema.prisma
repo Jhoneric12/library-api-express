@@ -18,4 +18,21 @@ model Author {
   name String 
   bio String
   birth_date DateTime
+  book Book?
+}
+
+model Genre {
+  id Int @id @default(autoincrement())
+  name String 
+  description String
+  book Book?
+}
+
+model Book {
+  id Int @id @default(autoincrement())
+  title String
+  author_id Int @unique
+  author Author @relation(fields: [author_id], references: [id])
+  genre_id Int @unique
+  genre Genre @relation(fields: [genre_id], references: [id])
 }
