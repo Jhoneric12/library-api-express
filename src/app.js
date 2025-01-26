@@ -3,11 +3,13 @@ import 'dotenv/config'
 import AuthorRoute from './routes/AuthorRoute.js'
 import GenreRoute from './routes/GenreRoute.js'
 import BookRoute from './routes/BookRoute.js'
+import cors from 'cors'
 
 const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(express.json()) 
+app.use(cors())
 
 app.use('/api', AuthorRoute)
 app.use('/api', GenreRoute)
